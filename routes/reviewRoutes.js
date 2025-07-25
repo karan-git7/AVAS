@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Review = require('../models/Review');
 const Room = require('../models/room');
-const User = require('../models/User');
+const User = require('../models/user');
 const Booking = require('../models/booking'); // hypothetical bookings model
 const authMiddleware = require('../authMiddleware'); // ensure user is logged in
 
