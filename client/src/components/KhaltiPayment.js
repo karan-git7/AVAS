@@ -26,7 +26,7 @@ const KhaltiPayment = ({
         amount:100, // Use the passed amount dynamically
         purchase_order_id: `order_${Date.now()}`,
         purchase_order_name: "Room Booking",
-        return_url: "http://localhost:3000/payment-success",
+        return_url: `${process.env.REACT_APP_FRONTEND_URL}/payment-success`,
         customer_name: userName,
         customer_email: userEmail,
         customer_phone: userPhone,
