@@ -928,14 +928,6 @@ function RoomDetails({ }) {
                 />
               </button>
 
-              {/* <button className="payment-option esewa-button">
-                <EsewaPayment
-                  roomId={room._id}
-                  amount={room.price}
-                  productId={`ROOM_${room._id}`}
-                />
-              </button> */}
-
               <button className="payment-option card-button">
                 <StripeCheckout
                   amount={room && room.type === "hotel room" ? totalDays * room.price : room?.price}

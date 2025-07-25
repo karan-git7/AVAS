@@ -5,6 +5,7 @@ import bookingIcon from '../assets/booking-icon.png';
 import logoutIcon from '../assets/logout-icon.png';
 import adminIcon from '../assets/administrator.png';
 import logo from '../assets/AVASlogo.png';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const user = JSON.parse(localStorage.getItem('currentUser')) || null;
@@ -56,8 +57,8 @@ function Navbar() {
                 Rooms
               </a>
             </li>
-            <li className="nav-link"><a href="/about">About</a></li>
-            <li className="nav-link"><a href="/contact">Contact</a></li>
+        <li className="nav-link"><Link to="/about">About</Link></li>
+<li className="nav-link"><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
         <div className="nav-right-btn">
@@ -67,26 +68,25 @@ function Navbar() {
                 <div className="user-profile-logo">{getInitials(user.name)}</div>
                 <strong className="user-profile-btn-name">{user.name}</strong>
               </button>
-              {isOpen && (
-                <div className="profile-dropdown-content">
-                  {/* Link to profile with section set to 'profile' */}
-                  <a href="/profile?section=profile">
-                    <img src={profileIcon} alt="icon" className="icons" /> Profile
-                  </a>
-                  {/* Link to profile with section set to 'bookings' */}
-                  <a href="/profile?section=bookings">
-                    <img src={bookingIcon} alt="icon" className="icons" /> My Bookings
-                  </a>
-                  {user?.isAdmin && (
-                    <a href="/admin">
-                      <img src={adminIcon} alt="icon" className="icons" /> Admin Panel
-                    </a>
-                  )}
-                  <a href="#!" onClick={handleSignout}>
-                    <img src={logoutIcon} alt="icon" className="icons" /> Sign out
-                  </a>
-                </div>
-              )}
+             
+{isOpen && (
+  <div className="profile-dropdown-content">
+    <Link to="/profile?section=profile">
+      <img src={profileIcon} alt="icon" className="icons" /> Profile
+    </Link>
+    <Link to="/profile?section=bookings">
+      <img src={bookingIcon} alt="icon" className="icons" /> My Bookings
+    </Link>
+    {user?.isAdmin && (
+      <Link to="/admin">
+        <img src={adminIcon} alt="icon" className="icons" /> Admin Panel
+      </Link>
+    )}
+    <a href="#!" onClick={handleSignout}>
+      <img src={logoutIcon} alt="icon" className="icons" /> Sign out
+    </a>
+  </div>
+)}
             </div>
           ) : (
             <div className="btn-log">
