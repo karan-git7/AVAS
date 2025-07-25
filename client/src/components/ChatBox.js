@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 import '../screens/RoomDetails.css';
 
 // Connect to your Socket.io backend
-const socket = io('http://localhost:5000'); // Update with your backend URL if different
+const socket = io(process.env.REACT_APP_API_URL);; // Update with your backend URL if different
 
 function ChatBox({ roomid, currentUser, ownerId }) {
   const [messages, setMessages] = useState([]);
