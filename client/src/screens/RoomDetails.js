@@ -521,9 +521,14 @@ function RoomDetails({ }) {
             <div className="room-images">
               <div className="large-image">
                 <img
-                  src={room.imageUrls[0].startsWith('http') ? room.imageUrls[0] : `/${room.imageUrls[0]}`}
-                  alt="Room"
-                />
+  src={
+    room.imageUrls[0].startsWith('http')
+      ? room.imageUrls[0]
+      : `${process.env.REACT_APP_API_URL}${room.imageUrls[0].startsWith('/') ? '' : '/'}${room.imageUrls[0]}`
+  }
+  alt="Room"
+/>
+
                 <p className="room-info-time-ago">
                   {listingTime ? formatDistanceToNow(new Date(listingTime), { addSuffix: true }) : 'Unknown time'}
                 </p>
@@ -541,37 +546,51 @@ function RoomDetails({ }) {
               </div>
 
               <div className="small-images">
-                {room.imageUrls.slice(1, 4).map((url, index) => (
-                  <div key={index} className={`small-img-wrapper ${index === 2 ? 'with-overlay' : ''}`}>
-                    <img
-                      src={url.startsWith('http') ? url : `/${url}`}
-                      alt={`Image ${index + 1}`}
-                      className={`small-img ${index === 2 && room.imageUrls.length > 4 ? 'blur-img' : ''} small-img-${index + 1}`}
-                    />
-                    {index === 2 && room.imageUrls.length > 4 && (
-                      <div className="overlay" onClick={toggleGallery}>
-                        <span>+{room.imageUrls.length - 3}</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+  {room.imageUrls.slice(1, 4).map((url, index) => {
+    const finalUrl = url.startsWith('http')
+      ? url
+      : `${process.env.REACT_APP_API_URL}${url.startsWith('/') ? '' : '/'}${url}`;
 
-              {showGallery && (
-                <div className="gallery">
-                  <div className="gallery-content">
-                    <button className="close-gallery" onClick={toggleGallery}>x</button>
-                    {room.imageUrls.map((url, index) => (
-                      <img
-                        key={index}
-                        src={url.startsWith('http') ? url : `/${url}`}
-                        alt={`Gallery Image ${index + 1}`}
-                        className={`gallery-image gallery-image-${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
+    return (
+      <div key={index} className={`small-img-wrapper ${index === 2 ? 'with-overlay' : ''}`}>
+        <img
+          src={finalUrl}
+          alt={`Image ${index + 1}`}
+          className={`small-img ${index === 2 && room.imageUrls.length > 4 ? 'blur-img' : ''} small-img-${index + 1}`}
+        />
+        {index === 2 && room.imageUrls.length > 4 && (
+          <div className="overlay" onClick={toggleGallery}>
+            <span>+{room.imageUrls.length - 3}</span>
+          </div>
+        )}
+      </div>
+    );
+  })}
+</div>
+
+
+             {showGallery && (
+  <div className="gallery">
+    <div className="gallery-content">
+      <button className="close-gallery" onClick={toggleGallery}>x</button>
+      {room.imageUrls.map((url, index) => {
+        const finalUrl = url.startsWith('http')
+          ? url
+          : `${process.env.REACT_APP_API_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+
+        return (
+          <img
+            key={index}
+            src={finalUrl}
+            alt={`Gallery Image ${index + 1}`}
+            className={`gallery-image gallery-image-${index + 1}`}
+          />
+        );
+      })}
+    </div>
+  </div>
+)}
+
             </div>
 
             {/* Content Section Below Images */}
@@ -836,15 +855,20 @@ function RoomDetails({ }) {
         <div className="booking-popup-overlay">
           <div className="booking-popup-content">
             <div className="booking-popup-content-left">
-              <h2>{room.name}</h2>
-              <div className="booking-popup-image">
-                <img
-                  src={room.imageUrls[0].startsWith('http') ? room.imageUrls[0] : `/${room.imageUrls[0]}`}
-                  alt="Room"
-                />
-              </div>
-              <p><strong className="strong">{room.address}</strong></p>
-            </div>
+  <h2>{room.name}</h2>
+  <div className="booking-popup-image">
+    <img
+      src={
+        room.imageUrls[0].startsWith('http')
+          ? room.imageUrls[0]
+          : `${process.env.REACT_APP_API_URL}${room.imageUrls[0].startsWith('/') ? '' : '/'}${room.imageUrls[0]}`
+      }
+      alt="Room"
+    />
+  </div>
+  <p><strong className="strong">{room.address}</strong></p>
+</div>
+
             <div className="booking-popup-content-right">
               <h3>Booking Details</h3>
               <div className="booking-details-detail">

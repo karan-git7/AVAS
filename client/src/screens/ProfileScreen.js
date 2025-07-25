@@ -926,22 +926,23 @@ function ProfileScreen() {
                   
                   {/* Photo Gallery */}
                   <div className="owner-property-gallery-container">
-                    <div className="owner-property-gallery">
-                      {listing.imageUrls && listing.imageUrls.length > 0 ? (
-                        listing.imageUrls.map((photo, idx) => (
-                          <img
-                            key={idx}
-                            src={photo}
-                            alt={`Room Photo ${idx + 1}`}
-                            className="owner-property-image"
-                            onClick={() => openImagePreview(photo)}
-                          />
-                        ))
-                      ) : (
-                        <p>No Photos Available</p>
-                      )}
-                    </div>
-                  </div>
+  <div className="owner-property-gallery">
+    {listing.imageUrls && listing.imageUrls.length > 0 ? (
+      listing.imageUrls.map((photo, idx) => (
+        <img
+          key={idx}
+          src={photo.startsWith('http') ? photo : `${process.env.REACT_APP_API_URL}${photo.startsWith('/') ? '' : '/'}${photo}`}
+          alt={`Room Photo ${idx + 1}`}
+          className="owner-property-image"
+          onClick={() => openImagePreview(photo.startsWith('http') ? photo : `${process.env.REACT_APP_API_URL}${photo.startsWith('/') ? '' : '/'}${photo}`)}
+        />
+      ))
+    ) : (
+      <p>No Photos Available</p>
+    )}
+  </div>
+</div>
+
                   
                   {/* Info Section */}
                   <div className="owner-info-section">

@@ -140,46 +140,52 @@ function MapComponent({
               >
                 <Popup autoClose={false} closeOnClick={false} minWidth={200} maxWidth={300}>
                   <div className="popup-map-rooms">
-                    <div>
-                      {room.imageUrls[0]?.startsWith("http") ? (
-                        <img src={room.imageUrls[0]} alt={room.name} />
-                      ) : (
-                        <img src={`http://localhost:5000/${room.imageUrls[0]}`} alt={room.name} />
-                      )}
-                      <div className="room-review-overlay-map">
-                        {roomRating > 0 ? (
-                          <>
-                            <div
-                              className="single-star-map"
-                              style={{
-                                position: 'relative',
-                                display: 'inline-block',
-                                fontSize: '24px',
-                                lineHeight: 1,
-                              }}
-                            >
-                              <div style={{ color: '#ddd' }}>★</div>
-                              <div
-                                style={{
-                                  position: 'absolute',
-                                  top: 0,
-                                  left: 0,
-                                  whiteSpace: 'nowrap',
-                                  overflow: 'hidden',
-                                  width: `${(roomRating / 5) * 100}%`,
-                                  color: '#FFD700',
-                                }}
-                              >
-                                ★
-                              </div>
-                            </div>
-                            <span className="room-rating-text-map">{roomRating.toFixed(1)}</span>
-                          </>
-                        ) : (
-                          <span className="room-rating-text-map">No review</span>
-                        )}
-                      </div>
-                    </div>
+                   <div>
+  {room.imageUrls[0]?.startsWith("http") ? (
+  <img src={room.imageUrls[0]} alt={room.name} />
+) : (
+  <img
+    src={`${process.env.REACT_APP_API_URL}${room.imageUrls[0].startsWith('/') ? '' : '/'}${room.imageUrls[0]}`}
+    alt={room.name}
+  />
+)}
+
+
+  <div className="room-review-overlay-map">
+    {roomRating > 0 ? (
+      <>
+        <div
+          className="single-star-map"
+          style={{
+            position: 'relative',
+            display: 'inline-block',
+            fontSize: '24px',
+            lineHeight: 1,
+          }}
+        >
+          <div style={{ color: '#ddd' }}>★</div>
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              width: `${(roomRating / 5) * 100}%`,
+              color: '#FFD700',
+            }}
+          >
+            ★
+          </div>
+        </div>
+        <span className="room-rating-text-map">{roomRating.toFixed(1)}</span>
+      </>
+    ) : (
+      <span className="room-rating-text-map">No review</span>
+    )}
+  </div>
+</div>
+
                     <div className="popup-map-rooms-right">
                       <h4>{room.name}</h4>
                       <p  className={room.roomStatus === "Booked Today" ? "status-red" : "status-green"}>
