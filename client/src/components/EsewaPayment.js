@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 
 const EsewaPayment = ({ roomId, amount, productId }) => {
   const initiateEsewaPayment = async () => {

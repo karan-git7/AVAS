@@ -1,6 +1,6 @@
 // AdminScreen.jsx
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import AddYourRoom from '../components/AddYourRoom';

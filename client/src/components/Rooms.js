@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 import addressLogo from '../assets/location-dot-solid.svg';
 import timeago from '../assets/clock-regular.svg';
 import { formatDistanceToNow } from 'date-fns';

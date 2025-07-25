@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 import io from 'socket.io-client';
 import '../screens/RoomDetails.css';
 

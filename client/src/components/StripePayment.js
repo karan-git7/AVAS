@@ -1,7 +1,7 @@
 // src/components/StripePayment.js
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
-import axios from "axios";
+import axios from "../axiosConfig";
 import { useNavigate } from "react-router-dom";
 
 function StripePayment({ amount, room, fromdate, todate, roomid ,roomType , totaldays  }) {

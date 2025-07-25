@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 import Rooms from '../components/Rooms';
 import { DatePicker, Slider, Modal, Button } from 'antd';
 import moment from 'moment';

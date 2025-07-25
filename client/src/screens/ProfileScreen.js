@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Tag } from 'antd';
 import AddYourRoom from '../components/AddYourRoom';

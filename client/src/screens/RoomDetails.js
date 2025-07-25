@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import { formatDistanceToNow } from 'date-fns';

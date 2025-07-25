@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../axiosConfig";
 import "../components/paymentcss.css"; // Make sure to include the spinner CSS here
 
 const StripePaymentSuccess = () => {

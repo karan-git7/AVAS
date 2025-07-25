@@ -6,7 +6,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import L from "leaflet";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
-import axios from 'axios';
+import axios from "../axiosConfig";
 
 // Define marker icons
 const defaultIcon = L.icon({

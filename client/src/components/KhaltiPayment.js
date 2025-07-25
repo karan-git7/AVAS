@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 
 const KhaltiPayment = ({
   amount,       // Ensure amount has a default value (to prevent NaN)

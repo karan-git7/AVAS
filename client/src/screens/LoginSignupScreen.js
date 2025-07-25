@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './LoginSignupScreen.css';
-import axios from 'axios';
+import axios from "../axiosConfig";
 import { useNavigate } from 'react-router-dom';
 
 function LoginSignupScreen() {

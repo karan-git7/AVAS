@@ -1,6 +1,6 @@
 // AddYourRoom.jsx
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
+import axios from "../axiosConfig";
 import './AdminScreen.css';
 import MapComponent from './MapComponent';  // Import MapComponent for map selection
 
