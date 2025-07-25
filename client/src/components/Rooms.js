@@ -95,11 +95,11 @@ function Rooms({ room, fromdate, todate }) {
       <div className='sub-container'>
         <div className='mainImage'>
           <Link to={`/details/${room._id}/${fromdate || 'undefined'}/${todate || 'undefined'}`}>
-            <img
-              src={`${process.env.REACT_APP_API_URL}${room.imageUrls[0]}`}
-              alt={room.name}
-            />
-          </Link>
+  <img
+    src={`${process.env.REACT_APP_API_URL}${room.imageUrls[0].startsWith('/') ? '' : '/'}${room.imageUrls[0]}`}
+    alt={room.name}
+  />
+</Link>
           <button
             onClick={handleToggleSaved}
             className="save-room-btn"
