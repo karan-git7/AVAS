@@ -22,7 +22,7 @@ const KhaltiPayment = ({
   const handlePayment = async () => {
     setLoading(true); // Start loading state
     try {
-      const response = await axios.post("http://localhost:5000/api/payments/initiate", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/payments/initiate`, {
         amount:100, // Use the passed amount dynamically
         purchase_order_id: `order_${Date.now()}`,
         purchase_order_name: "Room Booking",

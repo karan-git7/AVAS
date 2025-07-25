@@ -17,7 +17,7 @@ function StripePayment({ amount, room, fromdate, todate, roomid ,roomType , tota
     console.log("Stripe Token:", token);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/stripe/charge", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/stripe/charge`, {
         token,
         amount: amount * 100 , // amount in cents for Stripe
         customer_name: userName,
